@@ -7,16 +7,13 @@ import Error from '../Error/Error';
 import './App.css';
 import { fetchJoke, JokeResponse } from '../../apiCalls';
 
-// interface IState { data: any }
 interface IState {
   data: JokeResponse | null;
 }
 
-
 class App extends Component<{}, IState> {
   constructor(props: {}) {
     super(props);
-    // Figure out  how to manage state in React v4 with TS
     this.state = {
       data: {
         id: '', 
