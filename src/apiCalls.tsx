@@ -1,9 +1,23 @@
-const fetchJoke = () => {
-  fetch('https://icanhazdadjoke.com/')
-    .then(response => {
-      if (!response.ok) {
-        // Figure out how TS throws Errors
+ export interface JokeResponse {
+  id: string;
+  joke: string;
+ }
+
+export const fetchJoke = () => {
+  return fetch('https://icanhazdadjoke.com/', {
+    headers: {
+      'Accept': 'application/json'
+    }
+  })
+    .then(response => response.json())
+    .then((json: JokeResponse) => {
+      if (!json.joke) {
+        throw new Error('Failed to fetch joke');
       }
-        // Finish API call
+      return json;
     })
-}
+    .catch(error => {
+      console.error(error);
+      return null;
+    });
+};
