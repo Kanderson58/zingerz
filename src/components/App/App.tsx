@@ -6,7 +6,19 @@ import JokeContainer from '../JokeContainer/JokeContainer';
 import Error from '../Error/Error';
 import './App.css';
 
-class App extends Component {
+interface IState { data: any }
+
+class App extends Component<{}, IState> {
+  constructor(props: {}) {
+    super(props);
+    // Figure out  how to manage state in React v4 with TS
+    this.state = {data: {}}
+  }
+
+  componentDidMount(): void {
+    
+  }
+
   render() {
     return (
       <main>
