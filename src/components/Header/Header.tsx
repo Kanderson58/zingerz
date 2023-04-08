@@ -1,12 +1,17 @@
 import './Header.css'
 import { Link } from 'react-router-dom';
+import logo from '../../header-2.png';
 
 const Header = () => {
   return (
     <header>
-      <Link to='/'> <h1>ZingerZ</h1> </Link>
-      <Link to='/'> HOME </Link>
-      <Link to='/search'> SEARCH </Link>
+      <Link to='/'>
+        <img className='logo' src={logo} alt="ZingerZ Logo" />
+      </Link>
+      <div className='nav-links'>
+        <Link to='/'> HOME </Link>
+        <Link to='/search'> SEARCH </Link>
+      </div>
     </header>
   );
 }

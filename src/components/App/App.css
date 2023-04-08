@@ -1,1 +1,22 @@
+main, body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Tilt Neon', cursive;
+}
 
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-family: 'Tilt Neon', cursive;
+}
+
+/* #FF0DA1 - hot pink
+
+#6D0CE8 - purple
+
+#0CE8B0 - mint green
+
+#56FF3B - lime green
+
+#197DFF - blue */

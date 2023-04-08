@@ -4,7 +4,7 @@ import './JokeContainer.css';
 
 function JokeContainer() {
   return (
-    <div>
+    <div className='joke-containter'>
       <h2>JokeContainer</h2>
       <SearchBar />
       {/* jokes will go here maybe someday */}

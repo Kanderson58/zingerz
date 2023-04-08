@@ -9,7 +9,7 @@ interface Props {
 const Joke = ({data}:Props) => {
   return (
     <section className='main-joke'>
-      {data ? data.joke : <Error />};
+      {data ? data.joke : <Error />}
     </section>
   );
 }
