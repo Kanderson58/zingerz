@@ -3,14 +3,13 @@ import { JokeResponse } from '../../apiCalls'
 import Error from '../Error/Error'
 
 interface Props {
-  className?: string
-  data: JokeResponse | null
+  data: JokeResponse | null;
 }
 
-const Joke = ({className, data}:Props) => {
+const Joke = ({data}:Props) => {
   return (
-    <section>
-      {data ? data.joke : <Error />}
+    <section className='main-joke'>
+      {data ? data.joke : <Error />};
     </section>
   );
 }

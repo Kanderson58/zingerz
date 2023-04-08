@@ -11,16 +11,18 @@ const App = () => {
   const [data, setData] = useState<JokeResponse | null>({ id: '', joke: '' });
 
   useEffect(()=> {
-    fetchJoke().then(data => {
-      setData(data)
-    })
-  }, [])
+    fetchJoke().then(data => { setData(data); });
+  }, []);
+
+  const getRandomJoke = () => {
+    fetchJoke().then(newData => { setData(newData); });
+  }
 
     return (
       <main>
         <Header />
         <Switch>
-          <Route exact path='/'> <HomePage data={data} /> </Route>
+          <Route exact path='/'> <HomePage data={data} getRandomJoke={getRandomJoke} /> </Route>
           <Route path='/search'> <JokeContainer /> </Route>
           <Route path='*'> <Error /> </Route>
         </Switch>
