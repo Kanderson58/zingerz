@@ -16,9 +16,12 @@ header {
 a {
   text-decoration: none;
   cursor: pointer;
-  color: #56ff3b;
   margin-right: 10%;
   font-size: 20pt;
+  background: linear-gradient(to bottom, #56ff3b, #0ce8b0 75%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 a:hover {

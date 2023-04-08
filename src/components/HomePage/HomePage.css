@@ -21,5 +21,7 @@
 
 .new-joke-btn:hover {
   transform: rotate(360deg);
-  transition: transform 0.5s ease;
+  transition: transform 1s ease;
+  background-color: #FF0DA1;
+  color: #6D0CE8;
 }
