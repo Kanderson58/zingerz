@@ -1,0 +1,33 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 15%;
+  padding: 1%;
+  background: linear-gradient(to bottom, #ff8cd3, #FF0DA1, #2c236d);
+}
+
+.logo {
+  height: 60px;
+  margin-left: 7%;
+  margin-top: 7%;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+  color: #56ff3b;
+  margin-right: 10%;
+  font-size: 20pt;
+}
+
+a:hover {
+  background: linear-gradient(to bottom,#f700b7, #01c9f1, #01c9f1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.nav-links {
+  width: 20%;
+}

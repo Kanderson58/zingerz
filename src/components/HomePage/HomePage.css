@@ -1,0 +1,25 @@
+.home-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url('/src/space-4.jpg');
+  height: 88vh;
+  background-position-x: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.new-joke-btn {
+  color: #0ce8b0;
+  padding: 1% 2%;
+  font-size: 15pt;
+  background: #197dff79;
+  border-radius: 10px;
+  margin-top: 2%;
+}
+
+.new-joke-btn:hover {
+  transform: rotate(360deg);
+  transition: transform 0.5s ease;
+}
