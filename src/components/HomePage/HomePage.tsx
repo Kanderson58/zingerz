@@ -1,16 +1,16 @@
-import React from 'react';
 import './HomePage.css';
 import { JokeResponse } from '../../apiCalls';
+import Joke from '../Joke/Joke';
 
 interface Props {
   data: JokeResponse | null
 }
 
-function HomePage({data}:Props) {
-
+const HomePage = ({data}:Props) => {
   return (
     <div>
-      <h2>I'm a homepage!</h2>
+      <Joke className='main-joke' data={data} />
+      <button className='new-joke-btn'>Tell Me Another</button>
     </div>
   );
 }

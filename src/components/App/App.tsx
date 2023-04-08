@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Header from '../Header/Header';
 import HomePage from '../HomePage/HomePage';
@@ -8,8 +8,8 @@ import './App.css';
 import { fetchJoke, JokeResponse } from '../../apiCalls';
 
 const App = () => {
-  const [data, setData] = useState<JokeResponse | null>({ joke: '' });
-  
+  const [data, setData] = useState<JokeResponse | null>({ id: '', joke: '' });
+
   useEffect(()=> {
     fetchJoke().then(data => {
       setData(data)
