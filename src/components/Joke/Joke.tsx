@@ -1,10 +1,15 @@
-import React from 'react';
 import './Joke.css'
+import { JokeResponse } from '../../apiCalls'
+import Error from '../Error/Error'
 
-function Joke() {
+interface Props {
+  data: JokeResponse | null;
+}
+
+const Joke = ({data}:Props) => {
   return (
-    <section>
-      
+    <section className='main-joke'>
+      {data ? data.joke : <Error />};
     </section>
   );
 }

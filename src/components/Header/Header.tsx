@@ -1,8 +1,7 @@
-import React from 'react';
 import './Header.css'
 import { Link } from 'react-router-dom';
 
-function Header() {
+const Header = () => {
   return (
     <header>
       <Link to='/'> <h1>ZingerZ</h1> </Link>
