@@ -7,15 +7,12 @@ import Error from '../Error/Error';
 import './App.css';
 import { fetchJoke, JokeResponse } from '../../apiCalls';
 
-
-
 const App = () => {
-  const [data, setData] = useState<JokeResponse | null>({ id: '', joke: '' });
+  const [data, setData] = useState<JokeResponse | null>({ joke: '' });
   
   useEffect(()=> {
     fetchJoke().then(data => {
       setData(data)
-      // console.log('data', data);
     })
   }, [])
 
@@ -23,13 +20,12 @@ const App = () => {
       <main>
         <Header />
         <Switch>
-          <Route exact path='/'> <HomePage /> </Route>
+          <Route exact path='/'> <HomePage data={data} /> </Route>
           <Route path='/search'> <JokeContainer /> </Route>
           <Route path='*'> <Error /> </Route>
         </Switch>
       </main>
     );
-  
 }
 
 export default App;
