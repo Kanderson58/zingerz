@@ -15,7 +15,7 @@ const App = () => {
   useEffect(()=> {
     fetchJoke().then(data => {
       setData(data)
-      console.log('data', data);
+      // console.log('data', data);
     })
   }, [])
 
