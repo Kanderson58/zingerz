@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Header from '../Header/Header';
 import HomePage from '../HomePage/HomePage';
@@ -7,29 +7,18 @@ import Error from '../Error/Error';
 import './App.css';
 import { fetchJoke, JokeResponse } from '../../apiCalls';
 
-interface IState {
-  data: JokeResponse | null;
-}
 
-class App extends Component<{}, IState> {
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      data: {
-        id: '', 
-        joke: ''
-      }
-    };
-  }
 
-  componentDidMount() {
-    fetchJoke().then(json => {
-      this.setState({ data: json });
-      console.log(json);
-    });
-  }
+const App = () => {
+  const [data, setData] = useState<JokeResponse | null>({ id: '', joke: '' });
+  
+  useEffect(()=> {
+    fetchJoke().then(data => {
+      setData(data)
+      // console.log('data', data);
+    })
+  }, [])
 
-  render() {
     return (
       <main>
         <Header />
@@ -40,7 +29,7 @@ class App extends Component<{}, IState> {
         </Switch>
       </main>
     );
-  }
+  
 }
 
 export default App;
