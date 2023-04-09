@@ -1,3 +1,20 @@
 .joke-container {
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url('/src/space-4.jpg');
+  height: 88vh;
+  background-position-x: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h2 {
+  color: white;
+  text-align: center;
+  width: 85%;
+  height: 70%;
+  border-radius: 25px;
+  background-color: #ff0da275;
 }
