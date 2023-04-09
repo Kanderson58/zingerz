@@ -1,0 +1,21 @@
+.error {
+  background: rgba(255, 255, 255, 0.805);
+  border-radius: 15px;
+  padding: 5%;
+  color: #ff8cd3;
+  text-shadow: 3px 3px #2c236d;
+}
+
+.error-message {
+  animation-name: stretch;
+  animation-duration: 2.0s;
+  animation-timing-function: ease-out;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-play-state: running;
+}
+
+@keyframes stretch {
+  0% { transform: scale(.75); }
+  100% { transform: scale(1.0); }
+}

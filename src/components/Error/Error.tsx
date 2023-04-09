@@ -4,7 +4,7 @@ import './Error.css';
 function Error() {
   return (
     <section className='error'>
-      <h2>ERRRRRROOOOOAAAAAARRRRRRrrrrrrrr</h2>
+      <p className='error-message'>ERRRRRROOOOOAAAAAARRRRRR</p>
     </section>
   );
 }

@@ -18,16 +18,16 @@ const App = () => {
     fetchJoke().then(newData => { setData(newData); });
   }
 
-    return (
-      <main>
-        <Header />
-        <Switch>
-          <Route exact path='/'> <HomePage data={data} getRandomJoke={getRandomJoke} /> </Route>
-          <Route path='/search'> <JokeContainer /> </Route>
-          <Route path='*'> <Error /> </Route>
-        </Switch>
-      </main>
-    );
+  return (
+    <main>
+      <Header />
+      <Switch>
+        <Route exact path='/'> <HomePage data={data} getRandomJoke={getRandomJoke} /> </Route>
+        <Route path='/search'> <JokeContainer /> </Route>
+        <Route path='*'> <Error /> </Route>
+      </Switch>
+    </main>
+  );
 }
 
 export default App;
