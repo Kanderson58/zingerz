@@ -6,7 +6,6 @@ type Event = ChangeEvent<HTMLInputElement>
 const SearchBar = () => {
   const [search, setSearch] = useState('')
 
-
   return (
     <form>
       <input
@@ -16,6 +15,7 @@ const SearchBar = () => {
         value={search} 
         onChange={(event: Event) => setSearch(event.target.value)} 
       />
+      <button className='clear-btn'>X</button>
     </form>
   );
 }

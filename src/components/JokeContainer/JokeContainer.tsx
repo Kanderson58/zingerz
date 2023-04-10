@@ -4,10 +4,9 @@ import './JokeContainer.css';
 
 function JokeContainer() {
   return (
-    <div className='joke-containter'>
-      <h2>JokeContainer</h2>
+    <div className='joke-container'>
       <SearchBar />
-      {/* jokes will go here maybe someday */}
+      <h2>jokes will go here maybe someday</h2>
     </div>
   );
 }
