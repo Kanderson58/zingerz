@@ -1,10 +1,9 @@
-import React from 'react';
 import './Error.css';
 
 function Error() {
   return (
     <section className='error'>
-      <p className='error-message'>ERRRRRROOOOOAAAAAARRRRRR</p>
+      <h2 className='error-message'>ERROR</h2>
     </section>
   );
 }
