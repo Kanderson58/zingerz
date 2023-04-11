@@ -8,7 +8,7 @@ export interface SearchResponse {
   "limit": number,
   "next_page": number,
   "previous_page": number,
-  "results": JokeResponse[],
+  "results": Array<JokeResponse>,
   "search_term": string,
   "status": number,
   "total_jokes": number,
@@ -49,16 +49,3 @@ export const fetchSearch = async(term: string): Promise<SearchResponse | null> =
     });
 }
 
-
-// export const fetchJoke = async(): Promise<JokeResponse | null> => {
-//   const url = 'https://icanhazdadjoke.com/'
-
-//   try {
-//     const data = await fetch(url);
-//     const pets = await data.json();
-//     return pets
-//   } catch(error) {
-//     console.log('ugh')
-//     return null
-//   }
-// };

@@ -1,19 +1,23 @@
 import React, { useState, ChangeEvent } from 'react';
 import { fetchSearch } from '../../apiCalls';
 import './SearchBar.css';
+import { SearchResponse, JokeResponse } from '../../apiCalls';
 
 type Event = ChangeEvent<HTMLInputElement>
 type clickEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>
 
 const SearchBar = () => {
   const [term, setTerm] = useState('')
-  //need to create error state
+  const [searchResult, setSearchResult] = useState<SearchResponse | null>(null)
 
   const searchJokes = (event: clickEvent) => {
     event.preventDefault();
     fetchSearch(term)
-      .then(data => console.log(data))
-      //need to make catch
+      .then(data => {
+        setSearchResult(data)
+        console.log(data)
+      })
+      
   }
 
   return (
@@ -25,7 +29,7 @@ const SearchBar = () => {
         value={term} 
         onChange={(event: Event) => setTerm(event.target.value)} 
       />
-      <button className='clear-btn' onClick={(event: clickEvent) => searchJokes(event)}>X</button>
+      <button className='search-btn' onClick={(event: clickEvent) => searchJokes(event)}>🔍</button>
     </form>
   );
 }
