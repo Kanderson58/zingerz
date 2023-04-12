@@ -1,13 +1,22 @@
-.joke-container {
+.search-page {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-image: url('/src/space-4.jpg');
-  height: 88vh;
+  background-image: url('/src/grid-space.png');
+  height: 90vh;
   background-position-x: center;
   background-repeat: no-repeat;
   background-size: cover;
+  overflow-y: auto;
+}
+
+.all-jokes {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 5%;
 }
 
 h2 {

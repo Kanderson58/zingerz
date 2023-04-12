@@ -1,10 +1,39 @@
 .main-joke {
   color: white;
   text-align: center;
-  padding: 8%;
+  padding: 4%;
+  margin-top: 5%;
   border-radius: 25px;
   background-color: #ff0da275;
+  border: #ff0da2 solid 10px;
   width: 50%;
-  font-size: 30pt;
+  font-size: 22pt;
   text-shadow: 2px 2px 2px #0CE8B0 ;
+  position: relative;
+}
+
+.search-joke {
+  color: white;
+  text-align: center;
+  border-radius: 25px;
+  background-color: #ff0da275;
+  width: 250px;
+  padding: 3%;
+  margin: 1%;
+  font-size: 18pt;
+  text-shadow: 2px 2px 2px #0CE8B0;
+}
+
+.main-joke:before {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 0;
+  z-index: 1;
+  border-style: solid;
+  border-color: #ff0da2 transparent;
+  border-width: 35px 25px 0;
+  bottom: -45px;
+  left: 50%;
+  margin-left: -28px;
 }

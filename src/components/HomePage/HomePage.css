@@ -3,20 +3,21 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-image: url('/src/space-4.jpg');
+  background-image: url('/src/grid-space.png');
   height: 88vh;
   background-position-x: center;
   background-repeat: no-repeat;
   background-size: cover;
+  overflow: auto;
 }
 
 .new-joke-btn {
   color: #0ce8b0;
   padding: 1% 2%;
-  font-size: 15pt;
-  background: #197dff79;
+  font-size: 18pt;
+  background: #197dff9b;
   border-radius: 10px;
-  margin-top: 2%;
+  margin: 5% 0;
 }
 
 .new-joke-btn:hover {
