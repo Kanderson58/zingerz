@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent, FC } from 'react';
 import { fetchSearch } from '../../apiCalls';
 import './SearchBar.css';
 import { SearchResponse } from '../../apiCalls';
@@ -7,15 +7,18 @@ import Joke from '../Joke/Joke';
 type Event = ChangeEvent<HTMLInputElement>
 type clickEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>
 
-const SearchBar = () => {
+
+
+const SearchBar: Function = (displaySearch: Function) => {
   const [term, setTerm] = useState('')
   // const [searchResult, setSearchResult] = useState<SearchResponse | null>(null)
 
   const searchJokes = (event: clickEvent) => {
     event.preventDefault();
+    console.log('INSIDE SEARCH JOKES')
     fetchSearch(term)
       .then(data => {
-        setSearchResult(data);
+        displaySearch(data);
       })
   }
 
