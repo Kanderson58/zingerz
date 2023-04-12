@@ -11,23 +11,27 @@ import { fetchJoke, JokeResponse } from '../../apiCalls';
 const App = () => {
   const [data, setData] = useState<JokeResponse | null>({ id: '', joke: '' });
   const [mousePos, setMousePos] = useState({x: 0, y: 0});
+  const [error, setError] = useState('')
 
   useEffect(()=> {
-    fetchJoke().then(data => { setData(data); });
+    fetchJoke().then(data => { setData(data); })
+    .catch(error => { setError(error.toString())})
   }, []);
 
   const getRandomJoke = () => {
-    fetchJoke().then(newData => { setData(newData); });
+    fetchJoke().then(newData => { setData(newData); })
+    .catch(error => { setError(error.toString())})
   }
 
   return (
     <main onMouseMove={e => setMousePos({x: e.clientX, y: e.clientY})}>
       {sparkles(mousePos.x, mousePos.y)}
       <Header />
+      {error && <Error error={error} />}
       <Switch>
         <Route exact path='/'> <HomePage data={data} getRandomJoke={getRandomJoke} /> </Route>
         <Route path='/search'> <SearchPage /> </Route>
-        <Route path='*'> <Error /> </Route>
+        <Route path='*'> <Error error={error} /> </Route>
       </Switch>
     </main>
   );

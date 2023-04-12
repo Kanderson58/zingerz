@@ -1,9 +1,13 @@
 import './Error.css';
 
-function Error() {
+interface Props {
+  error: string;
+}
+
+const Error = ({error}: Props) => {
   return (
     <section className='error'>
-      <h2 className='error-message'>ERROR</h2>
+      <h2 className='error-message'>Sorry! Something went wrong. {error}</h2>
     </section>
   );
 }
