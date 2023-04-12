@@ -17,7 +17,7 @@ input {
   position: relative;
 }
 
-.search-btn {
+.search-btn, .clear-btn {
   background-color: rgb(220, 220, 220);
   border-radius: 30px;
   font-size: 15pt;
@@ -26,4 +26,14 @@ input {
   height: 30px;
   position: absolute;
   margin-right: 1%;
+}
+
+.search-btn {
+  transform: rotate(-45deg);
+  font-weight: 900;
+}
+
+.clear-btn {
+  margin-right: 4%;
+  font-size: smaller;
 }

@@ -8,6 +8,7 @@
   background-position-x: center;
   background-repeat: no-repeat;
   background-size: cover;
+  overflow: auto;
 }
 
 .new-joke-btn {
@@ -16,7 +17,7 @@
   font-size: 18pt;
   background: #197dff9b;
   border-radius: 10px;
-  margin-top: 2%;
+  margin: 5% 0;
 }
 
 .new-joke-btn:hover {

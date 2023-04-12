@@ -4,11 +4,12 @@ import Error from '../Error/Error'
 
 interface Props {
   data: JokeResponse | null;
+  class: string;
 }
 
-const Joke = ({data}:Props) => {
+const Joke = ({data, class: Props}:Props) => {
   return (
-    <section className='main-joke'>
+    <section className={Props}>
       {data ? data.joke : <Error />}
     </section>
   );

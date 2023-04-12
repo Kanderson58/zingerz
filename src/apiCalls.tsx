@@ -28,10 +28,6 @@ export const fetchJoke = async(): Promise<JokeResponse | null> => {
       }
       return json;
     })
-    .catch(error => {
-      console.error(error);
-      return null;
-    });
 };
 
 export const fetchSearch = async(term: string): Promise<SearchResponse | null> => {
@@ -42,10 +38,9 @@ export const fetchSearch = async(term: string): Promise<SearchResponse | null> =
   })
     .then(response => {
       if (!response.ok) {
-        throw new Error('Failed to search jokes')
+        throw new Error('Failed to search jokes');
       } else {
-        return response.json()
+        return response.json();
       }
     });
 }
-
