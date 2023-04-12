@@ -1,4 +1,5 @@
 import SearchBar from '../SearchBar/SearchBar';
+import Joke from '../Joke/Joke';
 import './SearchPage.css';
 import { SearchResponse } from '../../apiCalls';
 import { useState } from 'react'
@@ -16,7 +17,7 @@ const SearchPage = () => {
   return (
     <div className='search-page'>
       <SearchBar displaySearch={displaySearch} />
-      <h2>jokes will go here maybe someday</h2>
+      {searchResult && searchResult.results.map(result => <Joke data={result}/>)}
     </div>
   );
 }
