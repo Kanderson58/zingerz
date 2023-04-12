@@ -1,8 +1,7 @@
-import React, { useState, ChangeEvent, FC } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import { fetchSearch } from '../../apiCalls';
 import './SearchBar.css';
 import { SearchResponse } from '../../apiCalls';
-import Joke from '../Joke/Joke';
 
 type Event = ChangeEvent<HTMLInputElement>
 type ClickEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>
