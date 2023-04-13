@@ -1,8 +1,8 @@
-import SearchBar from '../SearchBar/SearchBar';
-import Joke from '../Joke/Joke';
-import './SearchPage.css';
-import { SearchResponse } from '../../apiCalls';
 import { useState } from 'react'
+import Joke from '../Joke/Joke';
+import SearchBar from '../SearchBar/SearchBar';
+import { SearchResponse } from '../../interfaces';
+import './SearchPage.css';
 
 const SearchPage = () => {
   const [searchResult, setSearchResult] = useState<SearchResponse | null>(null);

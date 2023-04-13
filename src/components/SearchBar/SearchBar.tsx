@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { fetchSearch } from '../../apiCalls';
-import './SearchBar.css';
-import { SearchResponse } from '../../apiCalls';
 import Error from '../Error/Error';
+import { fetchSearch } from '../../apiCalls';
+import { SearchResponse } from '../../interfaces';
+import './SearchBar.css';
 
 type Event = React.ChangeEvent<HTMLInputElement>
 type ClickEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>
-type Props = {
+interface Props {
   displaySearch: (result: SearchResponse | null) => void
 }
 

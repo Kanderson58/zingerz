@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import Error from '../Error/Error';
 import Header from '../Header/Header';
 import HomePage from '../HomePage/HomePage';
-import Error from '../Error/Error';
 import SearchPage from '../SearchPage/SearchPage';
+import { fetchJoke } from '../../apiCalls';
 import { Sparkles } from '../Sparkles/Sparkles';
+import { JokeResponse } from '../../interfaces';
 import './App.css';
-import { fetchJoke, JokeResponse } from '../../apiCalls';
 
 let sparkles: Array<JSX.Element> = [];
 

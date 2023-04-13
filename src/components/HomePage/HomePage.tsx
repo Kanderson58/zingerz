@@ -1,6 +1,6 @@
-import './HomePage.css';
-import { JokeResponse } from '../../apiCalls';
 import Joke from '../Joke/Joke';
+import { JokeResponse } from '../../interfaces';
+import './HomePage.css';
 
 interface Props {
   data: JokeResponse | null;

@@ -1,5 +1,5 @@
 import './Joke.css'
-import { JokeResponse } from '../../apiCalls'
+import { JokeResponse } from '../../interfaces'
 
 interface Props {
   data: JokeResponse | null;
