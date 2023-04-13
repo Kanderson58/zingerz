@@ -18,10 +18,21 @@
   border-radius: 25px;
   background-color: #ff0da275;
   width: 250px;
+  max-height: 200px;
   padding: 3%;
   margin: 1%;
   font-size: 18pt;
   text-shadow: 2px 2px 2px #0CE8B0;
+  overflow: auto;
+}
+
+.search-joke::-webkit-scrollbar {
+  width: 12px;
+}
+
+.search-joke::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #ff0da2; 
 }
 
 .main-joke:before {
