@@ -36,6 +36,13 @@ const SearchBar = ({ displaySearch }: Props) => {
       .catch(error => setError(error.toString()))
   }
 
+  const clearSearch = (event: ClickEvent) => {
+    event.preventDefault();
+    setTerm('');
+    setNoResult(false);
+    setError('');
+  };
+
   return (
     <div className='search-form'>
       <form>
@@ -47,7 +54,7 @@ const SearchBar = ({ displaySearch }: Props) => {
         onChange={(event: Event) => setTerm(event.target.value)} 
       />
       <button className='search-btn' disabled={btnDisable} onClick={searchJokes}>&#9906;</button>
-      <button className='clear-btn'>X</button>
+      <button className='clear-btn' onClick={clearSearch}>X</button>
       </form>
       {noResult && <p className='no-result-msg'>Sorry! No funny business here, try searching again.</p>}
       {error && <Error error={error} />}

@@ -11,7 +11,7 @@ interface Props {
 const HomePage = ({data, getRandomJoke, error}:Props) => {
   return (
     <div className='home-page'>
-      <Joke class='main-joke' data={data} error={error} />
+      <Joke data={data} error={error} />
       <button className='new-joke-btn' onClick={() => {getRandomJoke()}}>Tell Me Another</button>
     </div>
   );

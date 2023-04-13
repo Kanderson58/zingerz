@@ -15,7 +15,7 @@ const SearchPage = () => {
     <div className='search-page'>
       <SearchBar displaySearch={displaySearch} />
       <div className='all-jokes'>
-        {searchResult && searchResult.results.map(result => <Joke key={result.id} class='search-joke' data={result}/>)}
+        {searchResult && searchResult.results.map(result => <Joke key={result.id} data={result}/>)}
       </div>
     </div>
   );
