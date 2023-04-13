@@ -11,16 +11,22 @@ type Props = {
 }
 
 const SearchBar = ({ displaySearch }: Props) => {
-  const [term, setTerm] = useState('')
-  const [error, setError] = useState('')
-  const [btnDisable, setBtnDisable] = useState(true)
+  const [term, setTerm] = useState<string>('')
+  const [error, setError] = useState<string>('')
+  const [btnDisable, setBtnDisable] = useState<boolean>(true)
+  const [noResult, setNoResult] = useState<boolean>(false)
 
   const searchJokes = (event: ClickEvent) => {
     setError('');
     event.preventDefault();
     fetchSearch(term)
       .then(data => {
-        displaySearch(data);
+        if(data?.results.length === 0) {
+          setNoResult(true)
+        } else {
+          setNoResult(false)
+          displaySearch(data);
+        }
       })
       .catch(error => setError(error.toString()))
   }
@@ -43,6 +49,7 @@ const SearchBar = ({ displaySearch }: Props) => {
       <button className='search-btn' disabled={btnDisable} onClick={searchJokes}>&#9906;</button>
       <button className='clear-btn'>X</button>
       </form>
+      {noResult && <p className='no-result-msg'>Sorry! No funny business here, try searching again. </p>}
       {error && <Error error={error} />}
     </div>
   );
