@@ -1,16 +1,17 @@
 import './Joke.css'
 import { JokeResponse } from '../../apiCalls'
-import Error from '../Error/Error'
 
 interface Props {
   data: JokeResponse | null;
   class: string;
+  error?: string;
 }
 
-const Joke = ({data, class: Props}:Props) => {
+const Joke = ({data, error, class: Props}:Props) => {
   return (
     <section className={Props}>
-      {data ? data.joke : <Error />}
+      {data ? data.joke : null}
+      {error && <p className='home-error'>Sorry! {error} humor not found.</p>}
     </section>
   );
 }

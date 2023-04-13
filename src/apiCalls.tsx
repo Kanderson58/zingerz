@@ -21,12 +21,13 @@ export const fetchJoke = async(): Promise<JokeResponse | null> => {
       'Accept': 'application/json'
     }
   })
-    .then(response => response.json())
-    .then((json: JokeResponse) => {
-      if (!json.joke) {
-        throw new Error('Failed to fetch joke');
+    .then(response => {
+      if(!response.ok) {
+        throw new Error(`${response.status}`)
       }
-      return json;
+      else {
+        return response.json()
+      }
     })
 };
 
@@ -38,7 +39,7 @@ export const fetchSearch = async(term: string): Promise<SearchResponse | null> =
   })
     .then(response => {
       if (!response.ok) {
-        throw new Error('Failed to search jokes');
+        throw new Error(`${response.status}`);
       } else {
         return response.json();
       }
