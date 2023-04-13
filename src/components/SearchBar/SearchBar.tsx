@@ -13,6 +13,7 @@ type Props = {
 const SearchBar = ({ displaySearch }: Props) => {
   const [term, setTerm] = useState('')
   const [error, setError] = useState('')
+  const [btnDisable, setBtnDisable] = useState(true)
 
   const searchJokes = (event: ClickEvent) => {
     setError('');
@@ -24,6 +25,11 @@ const SearchBar = ({ displaySearch }: Props) => {
       .catch(error => setError(error.toString()))
   }
 
+  const handleTermChange = (event: Event) => {
+    setTerm(event.target.value)
+    setBtnDisable(!event.target.value)
+  }
+
   return (
     <div className='search-form'>
       <form>
@@ -32,9 +38,9 @@ const SearchBar = ({ displaySearch }: Props) => {
         name='term' 
         placeholder='Search jokes' 
         value={term} 
-        onChange={(event: Event) => setTerm(event.target.value)} 
+        onChange={handleTermChange} 
       />
-      <button className='search-btn' onClick={(event: ClickEvent) => searchJokes(event)}>&#9906;</button>
+      <button className='search-btn' disabled={btnDisable} onClick={searchJokes}>&#9906;</button>
       <button className='clear-btn'>X</button>
       </form>
       {error && <Error error={error} />}
