@@ -9,7 +9,6 @@ const SearchPage = () => {
 
   const displaySearch = (result: SearchResponse | null) => {
     setSearchResult(result);
-    console.log(result)
   }
 
   return (

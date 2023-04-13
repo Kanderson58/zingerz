@@ -19,6 +19,7 @@ const App = () => {
   }, []);
 
   const getRandomJoke = () => {
+    setError('')
     fetchJoke().then(newData => { setData(newData); })
     .catch(error => { setError(error.toString())})
   }
@@ -27,9 +28,8 @@ const App = () => {
     <main onMouseMove={e => setMousePos({x: e.clientX, y: e.clientY})}>
       {sparkles(mousePos.x, mousePos.y)}
       <Header />
-      {error && <Error error={error} />}
       <Switch>
-        <Route exact path='/'> <HomePage data={data} getRandomJoke={getRandomJoke} /> </Route>
+        <Route exact path='/'> <HomePage data={data} getRandomJoke={getRandomJoke} error={error} /> </Route>
         <Route path='/search'> <SearchPage /> </Route>
         <Route path='*'> <Error error={error} /> </Route>
       </Switch>

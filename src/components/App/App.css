@@ -11,3 +11,8 @@ button {
   cursor: pointer;
   font-family: 'Tilt Neon', cursive;
 }
+
+.error-msg {
+  color: black;
+  background-color: purple;
+}
