@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { fetchSearch } from '../../apiCalls';
-import './SearchBar.css';
-import { SearchResponse } from '../../apiCalls';
 import Error from '../Error/Error';
+import { fetchSearch } from '../../apiCalls';
+import { ISearchResponse } from '../../interfaces';
+import './SearchBar.css';
 
 type Event = React.ChangeEvent<HTMLInputElement>
-type ClickEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>
-type Props = {
-  displaySearch: (result: SearchResponse | null) => void
+type ClickMouseEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>
+interface Props {
+  displaySearch: (result: ISearchResponse | null) => void
 }
 
 const SearchBar = ({ displaySearch }: Props) => {
@@ -20,7 +20,7 @@ const SearchBar = ({ displaySearch }: Props) => {
     setBtnDisable(!term)
   }, [term])
 
-  const searchJokes = (event: ClickEvent) => {
+  const searchJokes = (event: ClickMouseEvent) => {
     setError('');
     event.preventDefault();
     fetchSearch(term)
@@ -36,7 +36,7 @@ const SearchBar = ({ displaySearch }: Props) => {
       .catch(error => setError(error.toString()))
   }
 
-  const clearSearch = (event: ClickEvent) => {
+  const clearSearch = (event: ClickMouseEvent) => {
     event.preventDefault();
     setTerm('');
     setNoResult(false);

@@ -1,9 +1,9 @@
 import './Joke.css'
-import { JokeResponse } from '../../apiCalls'
+import { IJokeResponse } from '../../interfaces'
 import { useLocation } from 'react-router-dom';
 
 interface Props {
-  data: JokeResponse | null;
+  data: IJokeResponse | null;
   error?: string;
 }
 

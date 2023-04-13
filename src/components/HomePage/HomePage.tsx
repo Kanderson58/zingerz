@@ -1,9 +1,9 @@
-import './HomePage.css';
-import { JokeResponse } from '../../apiCalls';
 import Joke from '../Joke/Joke';
+import { IJokeResponse } from '../../interfaces';
+import './HomePage.css';
 
 interface Props {
-  data: JokeResponse | null;
+  data: IJokeResponse | null;
   getRandomJoke: Function;
   error: string;
 }

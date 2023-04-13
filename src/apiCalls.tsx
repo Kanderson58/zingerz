@@ -1,21 +1,7 @@
- export interface JokeResponse {
-  id: string;
-  joke: string;
- }
+import { IJokeResponse } from "./interfaces";
+import { ISearchResponse } from "./interfaces";
 
-export interface SearchResponse {
-  "current_page": number,
-  "limit": number,
-  "next_page": number,
-  "previous_page": number,
-  "results": Array<JokeResponse>,
-  "search_term": string,
-  "status": number,
-  "total_jokes": number,
-  "total_pages": number
-}
-
-export const fetchJoke = async(): Promise<JokeResponse | null> => {
+export const fetchJoke = async(): Promise<IJokeResponse | null> => {
   return await fetch('https://icanhazdadjoke.com/', {
     headers: {
       'Accept': 'application/json'
@@ -31,7 +17,7 @@ export const fetchJoke = async(): Promise<JokeResponse | null> => {
     })
 };
 
-export const fetchSearch = async(term: string): Promise<SearchResponse | null> => {
+export const fetchSearch = async(term: string): Promise<ISearchResponse | null> => {
   return await fetch(`https://icanhazdadjoke.com/search?term=${term}`, {
     headers: {
       'Accept': 'application/json'
