@@ -36,6 +36,18 @@
     border-radius: 10px;
     margin: 10% 0;
     }
+    .home-page {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-image: url('/src/grid-space.png');
+      height: 88vh;
+      background-position-x: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      overflow: auto;
+    }
 }
 
 @media screen and (max-height: 40em) {
