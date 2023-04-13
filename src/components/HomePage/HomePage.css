@@ -26,3 +26,25 @@
   background-color: #FF0DA1;
   color: #6D0CE8;
 }
+
+@media screen and (max-width: 40em) {
+  .new-joke-btn {
+    color: yellow;
+    padding: 1% 2%;
+    font-size: 18pt;
+    background: #197dff9b;
+    border-radius: 10px;
+    margin: 10% 0;
+    }
+}
+
+@media screen and (max-height: 40em) {
+  .new-joke-btn {
+    color: orange;
+    padding: 1% 2%;
+    font-size: 18pt;
+    background: #197dff9b;
+    border-radius: 10px;
+    margin: 10% 0;
+    }
+}
