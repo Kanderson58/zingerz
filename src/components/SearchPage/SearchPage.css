@@ -28,4 +28,12 @@ h2 {
   background-color: #ff0da275;
 }
 
- 
+@media screen and (max-height: 40em) {
+  .all-jokes {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 15%;
+  }
+}
