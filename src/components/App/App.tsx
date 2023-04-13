@@ -4,7 +4,7 @@ import Header from '../Header/Header';
 import HomePage from '../HomePage/HomePage';
 import Error from '../Error/Error';
 import SearchPage from '../SearchPage/SearchPage';
-import { sparkles} from '../Sparkles';
+import { Sparkles } from '../Sparkles/Sparkles';
 import './App.css';
 import { fetchJoke, JokeResponse } from '../../apiCalls';
 
@@ -26,7 +26,8 @@ const App = () => {
 
   return (
     <main onMouseMove={e => setMousePos({x: e.clientX, y: e.clientY})}>
-      {sparkles(mousePos.x, mousePos.y)}
+      {/* {sparkles(mousePos.x, mousePos.y)} */}
+      <Sparkles x={mousePos.x} y={mousePos.y} />
       <Header />
       <Switch>
         <Route exact path='/'> <HomePage data={data} getRandomJoke={getRandomJoke} error={error} /> </Route>

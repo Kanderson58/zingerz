@@ -1,9 +1,12 @@
 .error {
-  background: rgba(255, 255, 255, 0.805);
+  background: rgba(255, 255, 255, 0.68);
   border-radius: 15px;
   padding: 5%;
   color: #ff8cd3;
   text-shadow: 3px 3px #2c236d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .error-message {

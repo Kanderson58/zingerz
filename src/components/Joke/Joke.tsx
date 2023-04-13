@@ -8,7 +8,6 @@ interface Props {
 }
 
 const Joke = ({data, error, class: Props}:Props) => {
-  console.log(data)
   return (
     <section className={Props}>
       {data && !error ? data.joke : null}
