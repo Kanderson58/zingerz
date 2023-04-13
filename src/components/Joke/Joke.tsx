@@ -1,8 +1,8 @@
 import './Joke.css'
-import { JokeResponse } from '../../interfaces'
+import { IJokeResponse } from '../../interfaces'
 
 interface Props {
-  data: JokeResponse | null;
+  data: IJokeResponse | null;
   class: string;
   error?: string;
 }

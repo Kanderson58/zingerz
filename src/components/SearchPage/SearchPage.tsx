@@ -1,13 +1,13 @@
 import { useState } from 'react'
 import Joke from '../Joke/Joke';
 import SearchBar from '../SearchBar/SearchBar';
-import { SearchResponse } from '../../interfaces';
+import { ISearchResponse } from '../../interfaces';
 import './SearchPage.css';
 
 const SearchPage = () => {
-  const [searchResult, setSearchResult] = useState<SearchResponse | null>(null);
+  const [searchResult, setSearchResult] = useState<ISearchResponse | null>(null);
 
-  const displaySearch = (result: SearchResponse | null) => {
+  const displaySearch = (result: ISearchResponse | null) => {
     setSearchResult(result);
   }
 

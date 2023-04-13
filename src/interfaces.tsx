@@ -1,14 +1,14 @@
-export interface JokeResponse {
+export interface IJokeResponse {
   id: string;
   joke: string;
  }
 
- export interface SearchResponse {
+ export interface ISearchResponse {
   "current_page": number,
   "limit": number,
   "next_page": number,
   "previous_page": number,
-  "results": Array<JokeResponse>,
+  "results": Array<IJokeResponse>,
   "search_term": string,
   "status": number,
   "total_jokes": number,

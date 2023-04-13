@@ -6,13 +6,13 @@ import HomePage from '../HomePage/HomePage';
 import SearchPage from '../SearchPage/SearchPage';
 import { fetchJoke } from '../../apiCalls';
 import { Sparkles } from '../Sparkles/Sparkles';
-import { JokeResponse } from '../../interfaces';
+import { IJokeResponse } from '../../interfaces';
 import './App.css';
 
 let sparkles: Array<JSX.Element> = [];
 
 const App = () => {
-  const [data, setData] = useState<JokeResponse | null>({ id: '', joke: '' });
+  const [data, setData] = useState<IJokeResponse | null>({ id: '', joke: '' });
   const [mousePos, setMousePos] = useState({x: 0, y: 0});
   const [error, setError] = useState('');
 
