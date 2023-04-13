@@ -16,7 +16,6 @@ describe('home page', () => {
       .visit('http://localhost:3000');
   });
 
-  // Will need to check for 'HOME' and 'SEARCH''s elements when we decide on which ones to use
   it('has a header', () => {
     cy.get('.logo').should('is.visible')
       .get('header').contains('HOME')
@@ -35,23 +34,22 @@ describe('home page', () => {
   });
 });
 
-// Will need to update these tests when we have updated the Error component to use the error state from App.
 describe('home page - sad paths', () => {
-  it.skip('should show an error message when initial fetch request fails on page load', () => {
+  it('should show an error message when initial fetch request fails on page load', () => {
     cy.intercept('https://icanhazdadjoke.com/', {
       statusCode: 404
     })
       .visit('http://localhost:3000')
-      .get('h2').contains('ERROR');
+      .get('.main-joke').contains('Sorry! Error: 404 humor not found.');
   });
 
-  it.skip('should show an error message when the joke button is clicked and the fetch fails', () => {
+  it('should show an error message when the joke button is clicked and the fetch fails', () => {
     cy.intercept('https://icanhazdadjoke.com/', sampleJoke1)
     .visit('http://localhost:3000')
     .intercept('https://icanhazdadjoke.com/', {
       statusCode: 404
     })
     .get('.new-joke-btn').click()
-    .get('h2').contains('ERROR');
+    .get('.main-joke').contains('Sorry! Error: 404 humor not found.');
   });
 });

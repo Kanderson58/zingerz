@@ -10,7 +10,7 @@ interface Props {
 const Joke = ({data, error, class: Props}:Props) => {
   return (
     <section className={Props}>
-      {data ? data.joke : null}
+      {data && !error ? data.joke : null}
       {error && <p className='home-error'>Sorry! {error} humor not found.</p>}
     </section>
   );
