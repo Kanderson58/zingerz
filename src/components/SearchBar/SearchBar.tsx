@@ -5,7 +5,7 @@ import { ISearchResponse } from '../../interfaces';
 import './SearchBar.css';
 
 type Event = React.ChangeEvent<HTMLInputElement>
-type ClickEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>
+type ClickMouseEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>
 interface Props {
   displaySearch: (result: ISearchResponse | null) => void
 }
@@ -20,7 +20,7 @@ const SearchBar = ({ displaySearch }: Props) => {
     setBtnDisable(!term)
   }, [term])
 
-  const searchJokes = (event: ClickEvent) => {
+  const searchJokes = (event: ClickMouseEvent) => {
     setError('');
     event.preventDefault();
     fetchSearch(term)

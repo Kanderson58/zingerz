@@ -10,6 +10,7 @@ import { IJokeResponse } from '../../interfaces';
 import './App.css';
 
 let sparkles: Array<JSX.Element> = [];
+type MoveMouseEvent = React.MouseEvent<HTMLElement, MouseEvent>
 
 const App = () => {
   const [data, setData] = useState<IJokeResponse | null>({ id: '', joke: '' });
@@ -27,8 +28,8 @@ const App = () => {
     .catch(error => { setError(error.toString())})
   }
 
-  const configureSparkles = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
-    setMousePos({x: e.clientX, y: e.clientY});
+  const configureSparkles = (event: MoveMouseEvent) => {
+    setMousePos({x: event.clientX, y: event.clientY});
     sparkles.push(<Sparkles x={mousePos.x} y={mousePos.y} />);
     setTimeout(() => {sparkles = sparkles.slice(1)}, 500);
   }
