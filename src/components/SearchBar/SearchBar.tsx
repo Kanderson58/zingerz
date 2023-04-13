@@ -36,6 +36,7 @@ const SearchBar = ({ displaySearch }: Props) => {
       .catch((error) => setError(error.toString()));
   };
 
+
   const clearSearch = (event: ClickEvent) => {
     event.preventDefault();
     setTerm("");
