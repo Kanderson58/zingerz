@@ -2,4 +2,5 @@
   position: absolute;
   height: 10px;
   width: 10px;
+  z-index: 3;
 }

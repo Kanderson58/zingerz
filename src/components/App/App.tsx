@@ -8,10 +8,12 @@ import { Sparkles } from '../Sparkles/Sparkles';
 import './App.css';
 import { fetchJoke, JokeResponse } from '../../apiCalls';
 
+let sparkles: Array<JSX.Element> = [];
+
 const App = () => {
   const [data, setData] = useState<JokeResponse | null>({ id: '', joke: '' });
   const [mousePos, setMousePos] = useState({x: 0, y: 0});
-  const [error, setError] = useState('')
+  const [error, setError] = useState('');
 
   useEffect(()=> {
     fetchJoke().then(data => { setData(data); })
@@ -24,10 +26,15 @@ const App = () => {
     .catch(error => { setError(error.toString())})
   }
 
+  const configureSparkles = (e: React.MouseEvent<HTMLElement, MouseEvent>) => {
+    setMousePos({x: e.clientX, y: e.clientY});
+    sparkles.push(<Sparkles x={mousePos.x} y={mousePos.y} />);
+    setTimeout(() => {sparkles = sparkles.slice(1)}, 500);
+  }
+
   return (
-    <main onMouseMove={e => setMousePos({x: e.clientX, y: e.clientY})}>
-      {/* {sparkles(mousePos.x, mousePos.y)} */}
-      <Sparkles x={mousePos.x} y={mousePos.y} />
+    <main onMouseMove={e => configureSparkles(e)}>
+      {sparkles.map(sparkle => sparkle)}
       <Header />
       <Switch>
         <Route exact path='/'> <HomePage data={data} getRandomJoke={getRandomJoke} error={error} /> </Route>
