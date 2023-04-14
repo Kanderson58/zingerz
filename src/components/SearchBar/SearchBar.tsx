@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Error from '../Error/Error';
 import { fetchSearch } from '../../apiCalls';
-import { ISearchResponse } from '../../interfaces';
+import { IJokeResponse } from '../../interfaces';
 import './SearchBar.css';
 
 type Event = React.ChangeEvent<HTMLInputElement>
 type ClickMouseEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>
 interface Props {
-  displaySearch: (result: ISearchResponse | null) => void
+  displaySearch: (result: IJokeResponse[] | undefined) => void
 }
 
 const SearchBar = ({ displaySearch }: Props) => {
@@ -25,12 +25,14 @@ const SearchBar = ({ displaySearch }: Props) => {
     event.preventDefault();
     fetchSearch(term)
       .then(data => {
+        const allJokes = data?.results;
+        
         if(!data?.results.length) {
           setNoResult(true);
-          displaySearch(data);
+          displaySearch(allJokes);
         } else {
           setNoResult(false);
-          displaySearch(data);
+          displaySearch(allJokes);
         }
       })
       .catch(error => setError(error.toString()))
@@ -41,7 +43,7 @@ const SearchBar = ({ displaySearch }: Props) => {
     setTerm('');
     setNoResult(false);
     setError('');
-    displaySearch(null)
+    displaySearch(undefined)
   };
 
   return (

@@ -31,7 +31,7 @@ const App = () => {
   const configureSparkles = (event: MoveMouseEvent) => {
     setMousePos({x: event.clientX, y: event.clientY});
     sparkles.push(<Sparkles x={mousePos.x} y={mousePos.y} key={Date.now()}/>);
-    setTimeout(() => {sparkles = sparkles.slice(1)}, 1000);
+    setTimeout(() => {sparkles = sparkles.slice(1)}, 200);
   }
 
   return (
