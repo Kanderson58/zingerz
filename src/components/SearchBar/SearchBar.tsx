@@ -7,7 +7,7 @@ import './SearchBar.css';
 type Event = React.ChangeEvent<HTMLInputElement>
 type ClickMouseEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>
 interface Props {
-  displaySearch: (result: IJokeResponse[] | undefined) => void
+  displaySearch: (result?: IJokeResponse[]) => void
 }
 
 const SearchBar = ({ displaySearch }: Props) => {
@@ -27,13 +27,6 @@ const SearchBar = ({ displaySearch }: Props) => {
       .then(data => {
         const allJokes = data?.results;
         const totalPages = data?.total_pages
-        
-        if (totalPages) {
-          for (let page = 2; page <= totalPages; page++) {
-            fetchSearch(term, page)
-              .then(data => data && allJokes?.push(...data.results))
-          }
-        }
         
         if(!data?.results.length) {
           setNoResult(true);

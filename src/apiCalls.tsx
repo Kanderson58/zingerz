@@ -1,8 +1,8 @@
 import { IJokeResponse } from "./interfaces";
 import { ISearchResponse } from "./interfaces";
 
-export const fetchJoke = async(): Promise<IJokeResponse | null> => {
-  return await fetch('https://icanhazdadjoke.com/', {
+export const fetchJoke = (): Promise<IJokeResponse | null> => {
+  return fetch('https://icanhazdadjoke.com/', {
     headers: {
       'Accept': 'application/json'
     }
@@ -17,8 +17,8 @@ export const fetchJoke = async(): Promise<IJokeResponse | null> => {
     })
 };
 
-export const fetchSearch = async(term: string, page: number = 1): Promise<ISearchResponse | null> => {
-  return await fetch(`https://icanhazdadjoke.com/search?term=${term}&limit=30&page=${page}`, {
+export const fetchSearch = (term: string, page: number = 1): Promise<ISearchResponse | null> => {
+  return fetch(`https://icanhazdadjoke.com/search?term=${term}&limit=30&page=${page}`, {
     headers: {
       'Accept': 'application/json'
     }
