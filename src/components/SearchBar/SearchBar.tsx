@@ -41,6 +41,7 @@ const SearchBar = ({ displaySearch }: Props) => {
     setTerm('');
     setNoResult(false);
     setError('');
+    displaySearch(null)
   };
 
   return (
