@@ -26,6 +26,14 @@ const SearchBar = ({ displaySearch }: Props) => {
     fetchSearch(term)
       .then(data => {
         const allJokes = data?.results;
+        const totalPages = data?.total_pages
+        
+        if (totalPages) {
+          for (let page = 2; page <= totalPages; page++) {
+            fetchSearch(term, page)
+              .then(data => data && allJokes?.push(...data.results))
+          }
+        }
         
         if(!data?.results.length) {
           setNoResult(true);
