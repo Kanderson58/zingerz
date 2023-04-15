@@ -81,3 +81,7 @@ input {
   margin: 0 2%;
   border-radius: 15px;
 }
+
+.hidden {
+  display: none;
+}

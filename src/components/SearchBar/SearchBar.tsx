@@ -6,6 +6,12 @@ import './SearchBar.css';
 
 type Event = React.ChangeEvent<HTMLInputElement>
 type ClickMouseEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>
+
+interface IActiveButtons {
+  prev: string,
+  next: string
+}
+
 interface Props {
   displaySearch: (result?: IJokeResponse[]) => void
 }
@@ -14,8 +20,9 @@ const SearchBar = ({ displaySearch }: Props) => {
   const [term, setTerm] = useState<string>('');
   const [btnDisable, setBtnDisable] = useState<boolean>(true);
   const [noResult, setNoResult] = useState<boolean>(false);
-  const [currentPage, setCurrentPage] = useState<number>(1);
+  const [currentPage, setCurrentPage] = useState<number>(0);
   const [totalPages, setTotalPages] = useState<number>(1);
+  const [activeButton, setActiveButtons] = useState<IActiveButtons>({ prev: 'hidden', next: 'hidden'});
   const [error, setError] = useState<string>('');
 
   useEffect(() => {
@@ -24,9 +31,10 @@ const SearchBar = ({ displaySearch }: Props) => {
 
   const searchJokes = (event: ClickMouseEvent) => {
     event.preventDefault();
+    setError('');
     setCurrentPage(1);
     setTotalPages(1);
-    setError('');
+    setActiveButtons({ prev: '', next: '' });
     fetchSearch(term)
       .then(data => {
         console.log('Initial Search: ', data)
@@ -44,20 +52,21 @@ const SearchBar = ({ displaySearch }: Props) => {
       .catch(error => setError(error.toString()))
   }
 
-  // Conditional logic:
-  // If data.current_page === total_pages, don't show next button
-  // If data.current_page === 1, don't show prev button
-
-  // Logic for pages:
-  // Set state for current page
-
   const changePage = (button: string) => {
+    setActiveButtons({ prev: '', next: '' });
+    if (currentPage === totalPages) {
+      setActiveButtons({ prev: '', next: 'hidden' });
+    }
     let pageDirection: number = button === 'next' ? currentPage + 1 : currentPage - 1;
-    
-    if (currentPage !== totalPages) {
-      fetchSearch(term, pageDirection)
+    console.log('changePage: ', currentPage)
+    setCurrentPage(pageDirection);
+  }
+
+  useEffect(() => {
+    if (currentPage !== totalPages && term) {
+      fetchSearch(term, currentPage)
       .then(data => {
-        data && setCurrentPage(data?.current_page);
+        console.log('useEffect page: ', currentPage)
         const jokes = data?.results;
         if(!data?.results.length) {
           setNoResult(true);
@@ -69,7 +78,27 @@ const SearchBar = ({ displaySearch }: Props) => {
       })
       .catch(error => setError(error.toString()))
     }
-  }
+  }, [currentPage])
+
+  // const changePage = (button: string) => {
+  //   let pageDirection: number = button === 'next' ? currentPage + 1 : currentPage - 1;
+    
+  //   if (currentPage !== totalPages) {
+  //     fetchSearch(term, pageDirection)
+  //     .then(data => {
+  //       data && setCurrentPage(data?.current_page);
+  //       const jokes = data?.results;
+  //       if(!data?.results.length) {
+  //         setNoResult(true);
+  //         displaySearch(jokes);
+  //       } else {
+  //         setNoResult(false);
+  //         displaySearch(jokes);
+  //       }
+  //     })
+  //     .catch(error => setError(error.toString()))
+  //   }
+  // }
 
   const clearSearch = (event: ClickMouseEvent) => {
     event.preventDefault();
@@ -93,8 +122,8 @@ const SearchBar = ({ displaySearch }: Props) => {
       <button className='clear-btn' onClick={clearSearch}>X</button>
       </form>
       <div className='page-btns'>
-        <button className='prev' onClick={() => changePage('prev')}>← Previous Page</button>
-        <button className='next' onClick={() => changePage('next')}>Next Page →</button>
+        <button className={`prev ${activeButton.prev}`} onClick={() => changePage('prev')}>← Previous Page</button>
+        <button className={`next ${activeButton.next}`} onClick={() => changePage('next')}>Next Page →</button>
       </div>
       {noResult && <p className='no-result-msg'>Sorry! No funny business here, try searching again.</p>}
       {error && <Error error={error} />}
