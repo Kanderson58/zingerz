@@ -68,3 +68,16 @@ input {
     box-shadow: 0px 0px 10px #56ff3b, 0px 0px 20px #56ff3b, 0px 0px 30px #56ff3b, 0px 0px 40px #56ff3b, 0px 0px 50px #56ff3b, 0px 0px 75px #56ff3b;
   }
 }
+
+.page-btns {
+  width: 100%;
+  text-align: center;
+}
+
+.prev, .next {
+  background-color: #ff0da2;
+  font-size: 15pt;
+  padding: 1%;
+  margin: 0 2%;
+  border-radius: 15px;
+}

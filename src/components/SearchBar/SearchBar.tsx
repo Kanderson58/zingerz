@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import Error from '../Error/Error';
 import { fetchSearch } from '../../apiCalls';
-import { ISearchResponse } from '../../interfaces';
+import { IJokeResponse } from '../../interfaces';
 import './SearchBar.css';
 
 type Event = React.ChangeEvent<HTMLInputElement>
 type ClickMouseEvent = React.MouseEvent<HTMLButtonElement, MouseEvent>
 interface Props {
-  displaySearch: (result: ISearchResponse | null) => void
+  displaySearch: (result?: IJokeResponse[]) => void
 }
 
 const SearchBar = ({ displaySearch }: Props) => {
@@ -25,12 +25,15 @@ const SearchBar = ({ displaySearch }: Props) => {
     event.preventDefault();
     fetchSearch(term)
       .then(data => {
+        const allJokes = data?.results;
+        const totalPages = data?.total_pages
+        
         if(!data?.results.length) {
           setNoResult(true);
-          displaySearch(data);
+          displaySearch(allJokes);
         } else {
           setNoResult(false);
-          displaySearch(data);
+          displaySearch(allJokes);
         }
       })
       .catch(error => setError(error.toString()))
@@ -41,7 +44,7 @@ const SearchBar = ({ displaySearch }: Props) => {
     setTerm('');
     setNoResult(false);
     setError('');
-    displaySearch(null)
+    displaySearch(undefined)
   };
 
   return (
@@ -57,6 +60,7 @@ const SearchBar = ({ displaySearch }: Props) => {
       <button className='search-btn' disabled={btnDisable} onClick={searchJokes}>&#9906;</button>
       <button className='clear-btn' onClick={clearSearch}>X</button>
       </form>
+      <div className='page-btns'><button className='prev'>← Previous Page</button><button className='next'>Next Page →</button></div>
       {noResult && <p className='no-result-msg'>Sorry! No funny business here, try searching again.</p>}
       {error && <Error error={error} />}
     </div>
