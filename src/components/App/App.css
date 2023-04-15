@@ -16,3 +16,96 @@ button {
   color: black;
   background-color: purple;
 }
+
+/* iPhone 12 Pro, SE, XR */
+@media screen and (max-width: 414px) { 
+  header {
+    flex-direction: column;
+    justify-content: center;
+    height: auto;
+    padding: 1rem ;
+  }
+
+  .logo {
+    margin: 0 auto;
+  }
+
+  .nav-links {
+    width: 100%;
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  .home-page {
+    height: 100vh;
+    padding: 1rem;
+  }
+
+  .all-jokes {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .new-joke-btn {
+    margin-top: 5rem;
+  }
+
+  form {
+    width: 90%;
+    margin: 1rem auto;
+  }
+
+  .clear-btn {
+    margin-right: 2.5rem;
+  }
+
+  .search-btn {
+    margin-right: .5rem;
+  }
+
+  .no-result-msg {
+    position: absolute;
+    top: calc(100% + 1rem);
+    left: 50%;
+    transform: translateX(-50%);
+    
+  }
+  
+}
+
+/* Samsung Galaxy, S8, A51 */
+@media screen and (max-width: 360px) {
+  header {
+    height: auto;
+    padding: 0.5rem 0;
+  }
+
+  .logo {
+    margin: 0 auto;
+  }
+
+  .nav-links {
+    width: 100%;
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+
+  .home-page {
+    height: 100vh;
+    padding: 0.5rem;
+  }
+
+  .all-jokes {
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  .new-joke-btn {
+    margin-top: 3rem;
+  }
+
+  form {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
