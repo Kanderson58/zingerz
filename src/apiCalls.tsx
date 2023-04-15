@@ -18,7 +18,7 @@ export const fetchJoke = (): Promise<IJokeResponse | null> => {
 };
 
 export const fetchSearch = (term: string, page: number = 1): Promise<ISearchResponse | null> => {
-  return fetch(`https://icanhazdadjoke.com/search?term=${term}&limit=30&page=${page}`, {
+  return fetch(`https://icanhazdadjoke.com/search?term=${term}&page=${page}`, {
     headers: {
       'Accept': 'application/json'
     }
