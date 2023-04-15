@@ -19,6 +19,7 @@ interface Props {
 const SearchBar = ({ displaySearch }: Props) => {
   const [term, setTerm] = useState<string>('');
   const [btnDisable, setBtnDisable] = useState<boolean>(true);
+  const [searchTerm, setSearchTerm] = useState<string>('');
   const [noResult, setNoResult] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(0);
   const [totalPages, setTotalPages] = useState<number>(1);
@@ -29,27 +30,31 @@ const SearchBar = ({ displaySearch }: Props) => {
     setBtnDisable(!term)
   }, [term])
 
-  const searchJokes = (event: ClickMouseEvent) => {
+  useEffect(() => {
+    searchTerm !== '' && fetchSearch(searchTerm)
+    .then(data => {
+      console.log('Initial Search: ', data)
+      const jokes = data?.results;
+      data && setTotalPages(data.total_pages);
+      
+      if(!data?.results.length) {
+        setNoResult(true);
+        displaySearch(jokes);
+      } else {
+        setNoResult(false);
+        displaySearch(jokes);
+      }
+    })
+    .catch(error => setError(error.toString()))
+  }, [searchTerm]);
+
+  const submitSearch = (event: ClickMouseEvent) => {
     event.preventDefault();
     setError('');
     setCurrentPage(1);
     setTotalPages(1);
     setActiveButtons({ prev: '', next: '' });
-    fetchSearch(term)
-      .then(data => {
-        console.log('Initial Search: ', data)
-        const jokes = data?.results;
-        data && setTotalPages(data.total_pages);
-        
-        if(!data?.results.length) {
-          setNoResult(true);
-          displaySearch(jokes);
-        } else {
-          setNoResult(false);
-          displaySearch(jokes);
-        }
-      })
-      .catch(error => setError(error.toString()))
+    setSearchTerm(term)
   }
 
   const changePage = (button: string) => {
@@ -80,33 +85,14 @@ const SearchBar = ({ displaySearch }: Props) => {
     }
   }, [currentPage])
 
-  // const changePage = (button: string) => {
-  //   let pageDirection: number = button === 'next' ? currentPage + 1 : currentPage - 1;
-    
-  //   if (currentPage !== totalPages) {
-  //     fetchSearch(term, pageDirection)
-  //     .then(data => {
-  //       data && setCurrentPage(data?.current_page);
-  //       const jokes = data?.results;
-  //       if(!data?.results.length) {
-  //         setNoResult(true);
-  //         displaySearch(jokes);
-  //       } else {
-  //         setNoResult(false);
-  //         displaySearch(jokes);
-  //       }
-  //     })
-  //     .catch(error => setError(error.toString()))
-  //   }
-  // }
-
   const clearSearch = (event: ClickMouseEvent) => {
     event.preventDefault();
     setTerm('');
+    setSearchTerm('');
     setNoResult(false);
     setError('');
-    displaySearch(undefined)
-  };
+    displaySearch(undefined);
+  }
 
   return (
     <div className='search-form'>
@@ -118,7 +104,7 @@ const SearchBar = ({ displaySearch }: Props) => {
         value={term} 
         onChange={(event: Event) => setTerm(event.target.value)} 
       />
-      <button className='search-btn' disabled={btnDisable} onClick={searchJokes}>&#9906;</button>
+      <button className='search-btn' disabled={btnDisable} onClick={submitSearch}>&#9906;</button>
       <button className='clear-btn' onClick={clearSearch}>X</button>
       </form>
       <div className='page-btns'>
