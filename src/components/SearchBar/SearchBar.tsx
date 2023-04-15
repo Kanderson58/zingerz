@@ -16,7 +16,6 @@ const SearchBar = ({ displaySearch }: Props) => {
   const [btnDisable, setBtnDisable] = useState<boolean>(true);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [noResult, setNoResult] = useState<boolean>(false);
-  const [allJokes, setAllJokes] = useState<IJokeResponse[]>([]);
   const [error, setError] = useState<string>('');
 
   useEffect(() => {
@@ -26,22 +25,22 @@ const SearchBar = ({ displaySearch }: Props) => {
 useEffect(() => {
   if (searchTerm !== "") {
     fetchSearch(searchTerm)
-      .then((data) => {
+      .then(data => {
         let totalPages = data?.total_pages;
         let fetchedJokes: IJokeResponse[] = [];
-        let jokeIds = new Set<string>();
+        let jokeIds: string[] = [];
 
         if (totalPages) {
           const pagePromises = [];
           for (let page = 1; page <= totalPages; page++) {
             pagePromises.push(
-              fetchSearch(searchTerm, page).then((response) => {
+              fetchSearch(searchTerm, page).then(response => {
                 const jokes = response?.results;
                 if (jokes) {
-                  jokes.forEach((joke) => {
-                    if (!jokeIds.has(joke.id)) {
+                  jokes.forEach(joke => {
+                    if (!jokeIds.includes(joke.id)) {
                       fetchedJokes.push(joke);
-                      jokeIds.add(joke.id);
+                      jokeIds.push(joke.id);
                     }
                   });
                 }
@@ -59,20 +58,12 @@ useEffect(() => {
                 displaySearch(fetchedJokes);
               }
             })
-            .catch((error) => {
-              if (error instanceof Error) {
-                setError(String(error));
-              }
-            });
+            .catch(error => { setError(error.toString()) });
         } else {
           displaySearch(fetchedJokes);
         }
       })
-      .catch((error) => {
-        if (error instanceof Error) {
-          setError(String(error));
-        }
-      });
+      .catch(error => { setError(error.toString()) });
   }
 }, [searchTerm]);
 
