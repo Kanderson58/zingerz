@@ -60,6 +60,7 @@ const SearchBar = ({ displaySearch }: Props) => {
       <button className='search-btn' disabled={btnDisable} onClick={searchJokes}>&#9906;</button>
       <button className='clear-btn' onClick={clearSearch}>X</button>
       </form>
+      <div className='page-btns'><button className='prev'>← Previous Page</button><button className='next'>Next Page →</button></div>
       {noResult && <p className='no-result-msg'>Sorry! No funny business here, try searching again.</p>}
       {error && <Error error={error} />}
     </div>

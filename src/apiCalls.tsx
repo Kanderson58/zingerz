@@ -31,7 +31,3 @@ export const fetchSearch = (term: string, page: number = 1): Promise<ISearchResp
       }
     });
 }
-
-
-
-

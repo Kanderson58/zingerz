@@ -19,7 +19,6 @@ const sampleJoke3 = {
 
 describe('Search View', () => {
   beforeEach('', () => {
-    console.log('sampleJoke3', sampleJoke3)
     cy.intercept('https://icanhazdadjoke.com/search?term=cat', sampleJoke3)
       .visit('http://localhost:3000/search');
   });
