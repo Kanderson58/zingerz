@@ -4,8 +4,8 @@ import Error from '../Error/Error';
 import Header from '../Header/Header';
 import HomePage from '../HomePage/HomePage';
 import SearchPage from '../SearchPage/SearchPage';
-import { fetchJoke } from '../../apiCalls';
-import { IJokeResponse } from '../../interfaces';
+import { fetchJokes } from '../../apiCalls';
+import { IJokeResponse, ISearchResponse } from '../../interfaces';
 import './App.css';
 
 const App = () => {
@@ -13,13 +13,13 @@ const App = () => {
   const [error, setError] = useState('');
 
   useEffect(()=> {
-    fetchJoke().then(data => { setData(data); })
+    fetchJokes('', 1).then(data => { setData(data); })
     .catch(error => { setError(error.toString())})
   }, []);
 
   const getRandomJoke = () => {
     setError('')
-    fetchJoke().then(newData => { setData(newData); })
+    fetchJokes('', 1).then(newData => { setData(newData); })
     .catch(error => { setError(error.toString())})
   }
 
