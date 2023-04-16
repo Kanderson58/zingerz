@@ -1,18 +1,10 @@
 /// <reference types="Cypress" />
 
-const sampleJoke1 = {
-  "id": "R7UfaahVfFd",
-  "joke": "My dog used to chase people on a bike a lot. It got so bad I had to take his bike away.",
-};
-
-const sampleJoke2 = {
-  "id": "R7UfaahVfFe",
-  "joke": "What did the farmer say when he lost his tractor? Where's my tractor?",
-};
-
 describe('home page', () => {
   beforeEach('visit homepage', () => {
-    cy.intercept('https://icanhazdadjoke.com/', sampleJoke1)
+    cy.intercept('https://icanhazdadjoke.com/', {
+      fixture: 'sampleJoke1.json'
+    })
       .visit('http://localhost:3000');
   });
 
@@ -28,7 +20,9 @@ describe('home page', () => {
   });
 
   it('gets a new joke when the button is clicked', () => {
-    cy.intercept('https://icanhazdadjoke.com/', sampleJoke2)
+    cy.intercept('https://icanhazdadjoke.com/', {
+      fixture: 'sampleJoke2.json'
+    })
       .get('.new-joke-btn').click()
       .get('.main-joke').contains('What did the farmer say when he lost his tractor? Where\'s my tractor?');
   });
@@ -44,7 +38,9 @@ describe('home page - sad paths', () => {
   });
 
   it('should show an error message when the joke button is clicked and the fetch fails', () => {
-    cy.intercept('https://icanhazdadjoke.com/', sampleJoke1)
+    cy.intercept('https://icanhazdadjoke.com/', {
+      fixture: 'sampleJoke1.json'
+    })
     .visit('http://localhost:3000')
     .intercept('https://icanhazdadjoke.com/', {
       statusCode: 404
