@@ -1,5 +1,3 @@
-import React from 'react';
-import './index.css';
 import { BrowserRouter } from 'react-router-dom';
 import * as ReactDOMClient from 'react-dom/client';
 import App from './components/App/App';
