@@ -70,7 +70,7 @@ useEffect(() => {
   const submitSearch = (event: ClickMouseEvent) => {
     event.preventDefault();
     setError('');
-    setSearchTerm(term)
+    setSearchTerm(term);
   }
 
   const clearSearch = (event: ClickMouseEvent) => {
