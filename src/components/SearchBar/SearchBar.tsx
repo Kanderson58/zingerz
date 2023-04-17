@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Error from '../Error/Error';
-import { fetchJokes } from '../../apiCalls';
+import { fetchSearch } from '../../apiCalls';
 import { IJokeResponse } from '../../interfaces';
 import './SearchBar.css';
 
@@ -24,7 +24,7 @@ const SearchBar = ({ displaySearch }: Props) => {
 
 useEffect(() => {
   if (searchTerm !== "") {
-    fetchJokes(searchTerm)
+    fetchSearch(searchTerm)
       .then(data => {
         let totalPages = data?.total_pages;
         let fetchedJokes: IJokeResponse[] = [];
@@ -34,7 +34,7 @@ useEffect(() => {
           const pagePromises = [];
           for (let page = 1; page <= totalPages; page++) {
             pagePromises.push(
-              fetchJokes(searchTerm, page).then(response => {
+              fetchSearch(searchTerm, page).then(response => {
                 const jokes = response?.results;
                 if (jokes) {
                   jokes.forEach((joke: IJokeResponse) => {
