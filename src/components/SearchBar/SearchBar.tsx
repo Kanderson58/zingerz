@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Error from '../Error/Error';
-import { fetchSearch } from '../../apiCalls';
-import { IJokeResponse } from '../../interfaces';
+import { fetchJokes } from '../../apiCalls';
+import { IJokeResponse, ISearchResponse } from '../../interfaces';
 import './SearchBar.css';
 
 type Event = React.ChangeEvent<HTMLInputElement>
@@ -24,7 +24,7 @@ const SearchBar = ({ displaySearch }: Props) => {
 
 useEffect(() => {
   if (searchTerm !== "") {
-    fetchSearch(searchTerm)
+    fetchJokes(searchTerm)
       .then(data => {
         let totalPages = data?.total_pages;
         let fetchedJokes: IJokeResponse[] = [];
@@ -34,10 +34,10 @@ useEffect(() => {
           const pagePromises = [];
           for (let page = 1; page <= totalPages; page++) {
             pagePromises.push(
-              fetchSearch(searchTerm, page).then(response => {
+              fetchJokes(searchTerm, page).then(response => {
                 const jokes = response?.results;
                 if (jokes) {
-                  jokes.forEach(joke => {
+                  jokes.forEach((joke: IJokeResponse) => {
                     if (!jokeIds.includes(joke.id)) {
                       fetchedJokes.push(joke);
                       jokeIds.push(joke.id);
@@ -70,7 +70,7 @@ useEffect(() => {
   const submitSearch = (event: ClickMouseEvent) => {
     event.preventDefault();
     setError('');
-    setSearchTerm(term)
+    setSearchTerm(term);
   }
 
   const clearSearch = (event: ClickMouseEvent) => {

@@ -1,0 +1,25 @@
+{
+  "current_page": 2,
+  "limit": 5,
+  "next_page": 2,
+  "previous_page": 1,
+  "results": [
+    {
+      "id": 6,
+      "joke": "Example Page 2"
+    },
+    {
+      "id": 7,
+      "joke": "Example Page 2"
+    },
+    {
+      "id": 8,
+      "joke": "Example Page 2"
+    },
+    {
+      "id": 9,
+      "joke": "Example Page 2"
+    }
+  ],
+  "total_pages": 2
+}
