@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Error from '../Error/Error';
-import { fetchJokes } from '../../apiCalls';
-import { IJokeResponse, ISearchResponse } from '../../interfaces';
+import { fetchSearch } from '../../apiCalls';
+import { IJokeResponse } from '../../interfaces';
 import './SearchBar.css';
 
 type Event = React.ChangeEvent<HTMLInputElement>
@@ -19,12 +19,12 @@ const SearchBar = ({ displaySearch }: Props) => {
   const [error, setError] = useState<string>('');
 
   useEffect(() => {
-    setBtnDisable(!term)
-  }, [term])
+    setBtnDisable(!term);
+  }, [term]);
 
 useEffect(() => {
   if (searchTerm !== "") {
-    fetchJokes(searchTerm)
+    fetchSearch(searchTerm)
       .then(data => {
         let totalPages = data?.total_pages;
         let fetchedJokes: IJokeResponse[] = [];
@@ -34,7 +34,7 @@ useEffect(() => {
           const pagePromises = [];
           for (let page = 1; page <= totalPages; page++) {
             pagePromises.push(
-              fetchJokes(searchTerm, page).then(response => {
+              fetchSearch(searchTerm, page).then(response => {
                 const jokes = response?.results;
                 if (jokes) {
                   jokes.forEach((joke: IJokeResponse) => {
@@ -86,14 +86,14 @@ useEffect(() => {
     <div className='search-form'>
       <form>
         <input
-        type='text' 
-        name='term' 
-        placeholder='Search jokes' 
-        value={term} 
-        onChange={(event: Event) => setTerm(event.target.value)} 
-      />
-      <button className='search-btn' disabled={btnDisable} onClick={submitSearch}>&#9906;</button>
-      <button className='clear-btn' onClick={clearSearch}>X</button>
+          type='text' 
+          name='term' 
+          placeholder='Search jokes' 
+          value={term} 
+          onChange={(event: Event) => setTerm(event.target.value)} 
+        />
+        <button className='search-btn' disabled={btnDisable} onClick={submitSearch}>&#9906;</button>
+        <button className='clear-btn' onClick={clearSearch}>X</button>
       </form>
       {noResult && <p className='no-result-msg'>Sorry! No funny business here, try searching again.</p>}
       {error && <Error error={error} />}

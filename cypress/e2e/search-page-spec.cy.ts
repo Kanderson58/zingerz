@@ -2,7 +2,10 @@
 
 describe('search view', () => {
   beforeEach('', () => {
-    cy.visit('http://localhost:3000/search');
+    cy.intercept('https://icanhazdadjoke.com/', {
+      fixture: 'sampleJoke1.json'
+    })
+      .visit('http://localhost:3000/search');
   });
 
   it('should allow user to click and type in search bar', () => {
@@ -10,27 +13,29 @@ describe('search view', () => {
       fixture: 'sampleJokes3.json'
     });
     cy.get('input').type('teachers').get('.search-btn').click()
-    .get('.search-joke').should('be.visible')
-    .contains('What\'s the worst thing about ancient history class? The teachers tend to Babylon.')
+      .get('input').should('have.value', 'teachers')
+      .get('.search-joke').should('be.visible')
+      .contains('What\'s the worst thing about ancient history class? The teachers tend to Babylon.');
   });
 
   it('should be able to go back home', () => {
     cy.get('.nav-links > [href="/"]').click()
-    cy.get('.main-joke')
+      .get('.main-joke');
   });
 
-  it.only('should display all jokes if there is more than one page in the API', () => {
+  it('should display all jokes if there is more than one page in the API', () => {
     cy.intercept('https://icanhazdadjoke.com/search?term=example&page=1', {
       fixture: 'page1.json'
-    });
+    })
 
-    cy.intercept('https://icanhazdadjoke.com/search?term=example&page=2', {
+      .intercept('https://icanhazdadjoke.com/search?term=example&page=2', {
       fixture: 'page2.json'
-    });
+    })
 
-    cy.get('input').type('example').get('.search-btn').click()
-    cy.get('.all-jokes > :nth-child(9)').contains('Example Page 2');
-  })
+      .get('input').type('example').get('.search-btn').click()
+      .get('input').should('have.value', 'example')
+      .get('.all-jokes > :nth-child(9)').contains('Example Page 2');
+  });
 });
 
 describe('sad paths', () => {
@@ -44,11 +49,13 @@ describe('sad paths', () => {
     });
 
     cy.get('input').type('cat').get('.search-btn').click()
+      .get('input').should('have.value', 'cat')
       .get('.error-message').contains('Sorry! Something went wrong. Error: 404');
   });
 
   it('should display an error message if the user seach has no results', () => {
     cy.get('input').type('badsearchterm').get('.search-btn').click()
-      .get('.no-result-msg').contains('Sorry! No funny business here, try searching again.')
+      .get('input').should('have.value', 'badsearchterm')
+      .get('.no-result-msg').contains('Sorry! No funny business here, try searching again.');
   });
 });

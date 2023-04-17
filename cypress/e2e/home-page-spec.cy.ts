@@ -41,11 +41,11 @@ describe('home page - sad paths', () => {
     cy.intercept('https://icanhazdadjoke.com/', {
       fixture: 'sampleJoke1.json'
     })
-    .visit('http://localhost:3000')
-    .intercept('https://icanhazdadjoke.com/', {
-      statusCode: 404
-    })
-    .get('.new-joke-btn').click()
-    .get('.main-joke').contains('Sorry! Error: 404 humor not found.');
+      .visit('http://localhost:3000')
+      .intercept('https://icanhazdadjoke.com/', {
+        statusCode: 404
+      })
+      .get('.new-joke-btn').click()
+      .get('.main-joke').contains('Sorry! Error: 404 humor not found.');
   });
 });
