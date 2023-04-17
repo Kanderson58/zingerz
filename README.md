@@ -45,7 +45,7 @@ Responsive Design for phone:
 
 ## Deployed Page
 
-Visit our deployed [ZingerZ page!](add deploy page here)
+Visit our deployed [ZingerZ page!](https://kanderson58.github.io/zingerz/)
 
 ## Wins
 - Self-taught and implemented TypeScript throughout the project utilizing best practices.
