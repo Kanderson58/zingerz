@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/zingerz/static/css/main.6d8f1144.css",
-    "main.js": "/zingerz/static/js/main.1cdc2e0e.js",
+    "main.js": "/zingerz/static/js/main.52d65101.js",
     "static/media/grid-space.png": "/zingerz/static/media/grid-space.94d93117b8ec777fc741.png",
     "static/media/header-2.png": "/zingerz/static/media/header-2.4c859086bc3c6b317512.png",
     "index.html": "/zingerz/index.html",
     "main.6d8f1144.css.map": "/zingerz/static/css/main.6d8f1144.css.map",
-    "main.1cdc2e0e.js.map": "/zingerz/static/js/main.1cdc2e0e.js.map"
+    "main.52d65101.js.map": "/zingerz/static/js/main.52d65101.js.map"
   },
   "entrypoints": [
     "static/css/main.6d8f1144.css",
-    "static/js/main.1cdc2e0e.js"
+    "static/js/main.52d65101.js"
   ]
 }
