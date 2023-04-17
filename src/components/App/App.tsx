@@ -7,12 +7,14 @@ import SearchPage from '../SearchPage/SearchPage';
 import { fetchJokes } from '../../apiCalls';
 import { IJokeResponse, ISearchResponse } from '../../interfaces';
 import './App.css';
+import { fairyDustCursor } from "cursor-effects"
 
 const App = () => {
   const [data, setData] = useState<IJokeResponse | null>({ id: '', joke: '' });
   const [error, setError] = useState('');
 
   useEffect(()=> {
+    new fairyDustCursor();
     fetchJokes('', 1).then(data => { setData(data); })
     .catch(error => { setError(error.toString())})
   }, []);

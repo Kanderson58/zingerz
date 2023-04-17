@@ -1,7 +1,6 @@
 .home-page {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   background-image: url('/src/grid-space.png');
   height: 100vh;
@@ -25,86 +24,4 @@
   transition: transform 1s ease;
   background-color: #FF0DA1;
   color: #6D0CE8;
-}
-
-
-/* Pixel Five and Samung Galaxy A51/71 */
-@media screen and (max-width: 393px) and (max-height: 851px) {
-  .home-page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-image: url('/src/grid-space.png');
-    height: 93vh;
-    background-position-x: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: auto;
-  }
-  .new-joke-btn {
-    color: #0ce8b0;
-    padding: 1% 2%;
-    font-size: 18pt;
-    background: #197dff9b;
-    border-radius: 10px;
-    margin: 10% 0;
-  }
-}
-
-/* Surface Duo */
-@media screen and (min-width: 394px) and (max-width: 819px) and (min-height: 852px) and (max-height: 1179px) {
-  .home-page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-image: url('/src/grid-space.png');
-    height: 93vh;
-    background-position-x: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: auto;
-  }
-  .new-joke-btn {
-    color: #0ce8b0;
-    padding: 1% 2%;
-    font-size: 18pt;
-    background: #197dff9b;
-    border-radius: 10px;
-    margin: 7% 0;
-  }
-}
-
-
-/* Ipad Air, Ipad Mini */
-@media screen and (max-width: 820px) and (max-height: 1180px) {
-  .home-page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-image: url('/src/grid-space.png');
-    height: 93vh;
-    background-position-x: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: auto;
-  }
-}
-
-/* Surface Pro 7 */
-@media screen and (min-width:821px) and (max-width: 912px) and (min-height: 1181px) and (max-height: 1368px) {
-  .home-page {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-image: url('/src/grid-space.png');
-    height: 93vh;
-    background-position-x: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow: auto;
-  }
 }

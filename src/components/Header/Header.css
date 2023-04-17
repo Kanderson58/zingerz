@@ -34,22 +34,3 @@ a:hover {
 .nav-links {
   width: 20%;
 }
-
-/* Pixel Five and Samung Galaxy A51/71 */
-@media screen and (max-width: 393px) and (max-height: 851px) {
-  .logo {
-    height: 45px;
-    margin-left: 7%;
-    margin-top: 7%;
-  }
-  a {
-    text-decoration: none;
-    cursor: pointer;
-    margin-right: 15%;
-    font-size: 15pt;
-    background: linear-gradient(to bottom, #56ff3b, #0ce8b0 75%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-}
