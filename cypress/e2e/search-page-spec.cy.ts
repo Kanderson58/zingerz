@@ -2,7 +2,10 @@
 
 describe('search view', () => {
   beforeEach('', () => {
-    cy.visit('http://localhost:3000/search');
+    cy.intercept('https://icanhazdadjoke.com/', {
+      fixture: 'sampleJoke1.json'
+    })
+      .visit('http://localhost:3000/search');
   });
 
   it('should allow user to click and type in search bar', () => {
@@ -19,7 +22,7 @@ describe('search view', () => {
     cy.get('.main-joke')
   });
 
-  it.only('should display all jokes if there is more than one page in the API', () => {
+  it('should display all jokes if there is more than one page in the API', () => {
     cy.intercept('https://icanhazdadjoke.com/search?term=example&page=1', {
       fixture: 'page1.json'
     });
