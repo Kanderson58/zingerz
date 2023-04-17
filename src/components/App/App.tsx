@@ -29,8 +29,8 @@ const App = () => {
     <main>
       <Header />
       <Switch>
-        <Route exact path='/zingerz/'> <HomePage data={data} getRandomJoke={getRandomJoke} error={error} /> </Route>
-        <Route path='/zingerz/search'> <SearchPage /> </Route>
+        <Route exact path='/'> <HomePage data={data} getRandomJoke={getRandomJoke} error={error} /> </Route>
+        <Route path='/search'> <SearchPage /> </Route>
         <Route path='*'> <Error error={error} /> </Route>
       </Switch>
     </main>
