@@ -5,7 +5,7 @@ describe('home page', () => {
     cy.intercept('https://icanhazdadjoke.com/', {
       fixture: 'sampleJoke1.json'
     })
-      .visit('http://localhost:3000');
+      .visit('http://localhost:3000/zingerz/');
   });
 
   it('has a header', () => {
@@ -33,7 +33,7 @@ describe('home page - sad paths', () => {
     cy.intercept('https://icanhazdadjoke.com/', {
       statusCode: 404
     })
-      .visit('http://localhost:3000')
+      .visit('http://localhost:3000/zingerz/')
       .get('.main-joke').contains('Sorry! Error: 404 humor not found.');
   });
 
@@ -41,7 +41,7 @@ describe('home page - sad paths', () => {
     cy.intercept('https://icanhazdadjoke.com/', {
       fixture: 'sampleJoke1.json'
     })
-      .visit('http://localhost:3000')
+      .visit('http://localhost:3000/zingerz')
       .intercept('https://icanhazdadjoke.com/', {
         statusCode: 404
       })

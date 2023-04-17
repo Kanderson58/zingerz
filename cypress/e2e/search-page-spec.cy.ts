@@ -5,7 +5,7 @@ describe('search view', () => {
     cy.intercept('https://icanhazdadjoke.com/', {
       fixture: 'sampleJoke1.json'
     })
-      .visit('http://localhost:3000/search');
+      .visit('http://localhost:3000/zingerz/search');
   });
 
   it('should allow user to click and type in search bar', () => {
@@ -40,7 +40,7 @@ describe('search view', () => {
 
 describe('sad paths', () => {
   beforeEach('', () => {
-    cy.visit('http://localhost:3000/search')
+    cy.visit('http://localhost:3000/zingerz/search')
   });
 
   it('should see 404 error in the case of a bad GET response', () => {

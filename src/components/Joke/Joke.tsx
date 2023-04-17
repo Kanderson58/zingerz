@@ -9,7 +9,7 @@ interface Props {
 
 const Joke = ({data, error}:Props) => {
   const location = useLocation();
-  const currentPath = (location.pathname === '/' ? 'main-joke' : 'search-joke');
+  const currentPath = (location.pathname === '/zingerz/' ? 'main-joke' : 'search-joke');
 
   return (
     <section className={currentPath}>
