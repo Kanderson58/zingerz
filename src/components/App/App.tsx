@@ -5,9 +5,9 @@ import Header from '../Header/Header';
 import HomePage from '../HomePage/HomePage';
 import SearchPage from '../SearchPage/SearchPage';
 import { fetchJokes } from '../../apiCalls';
-import { IJokeResponse, ISearchResponse } from '../../interfaces';
+import { IJokeResponse } from '../../interfaces';
 import './App.css';
-import { fairyDustCursor } from "cursor-effects"
+import { fairyDustCursor } from "cursor-effects";
 
 const App = () => {
   const [data, setData] = useState<IJokeResponse | null>({ id: '', joke: '' });
@@ -16,13 +16,13 @@ const App = () => {
   useEffect(()=> {
     new fairyDustCursor();
     fetchJokes('', 1).then(data => { setData(data); })
-    .catch(error => { setError(error.toString())})
+      .catch(error => { setError(error.toString())});
   }, []);
 
   const getRandomJoke = () => {
     setError('')
     fetchJokes('', 1).then(newData => { setData(newData); })
-    .catch(error => { setError(error.toString())})
+      .catch(error => { setError(error.toString())});
   }
 
   return (

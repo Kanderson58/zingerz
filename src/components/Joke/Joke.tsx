@@ -1,6 +1,6 @@
-import './Joke.css'
-import { IJokeResponse } from '../../interfaces'
+import { IJokeResponse } from '../../interfaces';
 import { useLocation } from 'react-router-dom';
+import './Joke.css';
 
 interface Props {
   data: IJokeResponse | null;
